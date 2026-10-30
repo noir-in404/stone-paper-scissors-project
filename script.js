@@ -14,7 +14,7 @@ Step 3- Test your code to make sure it works.
 
 function getComputerChoice(){
     let num_computer = Math.floor(Math.random()*3);
-    let computerChoice;
+    let computerSelect;
     if(num_computer === 0){
         computerSelect = "stone";
     }
@@ -38,43 +38,89 @@ function getHumanChoice(){
    return humanSelect;
 }
 
-// setting the score to zero as default
-let computerScore=0;
-let humanScore=0
 
-/* psuedo code for playing 1 round
+/* psuedo code for playing whole game of 5 rounds
+1. make a function for playing the game, named playGame()
+2. declare the score and call playRound() inside the playGame()
+3. call playRound function 5 time to play 5 rounds.
+
+*/
+
+function playGame(){
+   // setting the score to zero as default
+   let computerScore =0;
+   let humanScore=0;
+   
+   /* psuedo code for playing 1 round
 1. make a function named playRound;
 2. make 2 parameters in playRound for 2 arguments, humanChoice and computerChoice.
 3. make the human choice parameter case-insensitive.
 4. write conditional cases for winning/losing or tie.
 5. increment score of a winner and display winning/losing/tie message
 */
-
-function playRound(humanChoice, computerChoice){
+   function playRound(humanChoice, computerChoice){
    humanChoice = humanChoice.toLowerCase();
 
    if(humanChoice === computerChoice){
       console.log(`You choose: ${humanChoice}`);
       console.log(`Computer choose: ${computerChoice}`);
-      console.log("It's a tie");
+      console.log("It's a tie, try again");
    }
    else if ((humanChoice==="paper" && computerChoice==="stone") || 
 (humanChoice==="stone" && computerChoice==="scissor") ||
 (humanChoice==="scissor" && computerChoice==="paper")){
    console.log(`You choose: ${humanChoice}`);
    console.log(`Computer choose: ${computerChoice}`);
-   console.log(`You win! ${humanChoice} beats ${computerChoice}`)
-   humanScore++;
+   console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+   humanScore=humanScore+1;
    }
    else{
       console.log(`You choose: ${humanChoice}`);
       console.log(`Computer choose: ${computerChoice}`);
-      console.log(`You lose! ${computerChoice} beats ${humanChoice}`)
-      computerScore++;
+      console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+      computerScore=computerScore+1;
    }
 }
 
-let humanSelection = getHumanChoice();
-let computerSelection = getComputerChoice();
+   console.log("Round: 1")
+   let humanSelection = getHumanChoice();
+   let computerSelection = getComputerChoice();
+   playRound(humanSelection, computerSelection);
+   
+   console.log("Round: 2")
+   humanSelection = getHumanChoice();
+   computerSelection = getComputerChoice();
+   playRound(humanSelection, computerSelection);
+   
+   console.log("Round: 3")
+   humanSelection = getHumanChoice();
+   computerSelection = getComputerChoice();
+   playRound(humanSelection, computerSelection);
+   
+   console.log("Round: 4")
+   humanSelection = getHumanChoice();
+   computerSelection = getComputerChoice();
+   playRound(humanSelection, computerSelection);
+ 
+   console.log("Round: 5")
+   humanSelection = getHumanChoice();
+   computerSelection = getComputerChoice();
+   playRound(humanSelection, computerSelection);
+   
+   console.log(`
+      Your score: ${humanScore}
+      Computer score: ${computerScore}`)
 
-playRound(humanSelection, computerSelection);
+
+   if(humanScore===computerScore){
+      console.log("It's a tie.");
+   }
+   else if(humanScore>computerScore){
+      console.log("You won the Game!");
+   }
+   else{
+      console.log("You Lost the game!");
+   }
+}
+
+playGame();
