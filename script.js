@@ -30,22 +30,20 @@ function getComputerChoice(){
 /* psuedo code to getHumanChoice
 1. make a function getHumanChoice
 2. function takes input stone/paper/scissor
-3. make a variable num_human.
-4. if user inputs stone, store 0 in num_human. 1 for paper and 2 for scissors.
-5. returns num_human
+3. returns returns humanChoice
 */
 
 function getHumanChoice(){
    let humanChoice = prompt("What's your choice?");
-   let num_human;
-   if(humanChoice === "stone"){
-      num_human=0;
-   }
-   else if(humanChoice==="paper"){
-      num_human= 1;
-   }
-   else{
-      num_human=2;
-   }
-   return num_human;
+   return humanChoice;
 }
+
+// setting the score to zero as default
+let computerScore=0;
+let humanScore=0
+
+/* psuedo code for playing 1 round
+1. make a function named playRound;
+2. make 2 parameters in playRound for 2 arguments, humanChoice and computerChoice.
+
+*/
